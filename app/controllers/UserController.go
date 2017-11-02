@@ -20,7 +20,7 @@ func (con UserController) init() {
 func (con UserController) GetUser(c *gin.Context) {
 
 	c.JSON(200, gin.H{
-		"Message": con.UserRepository.GetUser(),
-		"Article": con.ArticleRepository.GetArticle(),
+		"users":    con.UserRepository.GetUser(),
+		"articles": con.ArticleRepository.GetArticle(),
 	})
 }

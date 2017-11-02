@@ -9,7 +9,7 @@ import (
 var DB *gorm.DB
 
 func Migrate() {
-	db, err := gorm.Open("mysql", "root:password@/goblog?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", "root:ab789789@/goblog?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		return
 	}
