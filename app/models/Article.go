@@ -4,7 +4,7 @@ package models
 
 type Article struct {
 	BaseModel
-	Title   string
-	Content string
-	UserID  int
+	Title   string `json:"title"`
+	Content string `json:"content"`
+	UserID  int    `json:"user_id"`
 }
