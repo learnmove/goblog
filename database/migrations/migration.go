@@ -15,7 +15,7 @@ func Migrate() {
 	}
 	DB = db
 	DB.DropTableIfExists(&models.User{}, &models.Article{})
-	DB.AutoMigrate(&models.User{}, &models.Article{})
+	DB.AutoMigrate(&models.User{}, &models.Article{}, &models.Passport{})
 	defer DB.Close()
 
 }

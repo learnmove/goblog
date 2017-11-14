@@ -14,8 +14,10 @@ func init() {
 func UserFake() interface{} {
 
 	user := User{
-		Name: fake.FirstName(),
-		Age:  rand.Intn(100),
+		Name:     fake.FirstName(),
+		Age:      rand.Intn(100),
+		Password: "secret",
+		Account:  fake.FirstName(),
 	}
 	return &user
 
