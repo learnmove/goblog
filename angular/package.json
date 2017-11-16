@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "@ngrx/effects": "^4.1.1",
+    "@ngrx/effects": "^4.0.0",
     "@ngrx/store": "git+https://github.com/ngrx/store-builds.git",
     "@ngrx/store-devtools": "^4.1.1",
     "core-js": "^2.4.1",

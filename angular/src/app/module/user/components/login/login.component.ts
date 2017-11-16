@@ -1,3 +1,4 @@
+import { Login } from './../../action/user.action';
 import { UserState } from './../../store/user.store';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -15,5 +16,7 @@ export class LoginComponent implements OnInit {
     console.log(this.store.select((state)=>state.userModule.user))
     
   }
-
+  test(){
+    this.store.dispatch(new Login())
+  }
 }

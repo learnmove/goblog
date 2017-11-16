@@ -1,3 +1,5 @@
+import { LoginEffect } from './module/user/effects/login.effect';
+import { EffectsModule } from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
+     EffectsModule.forRoot([]),
 	StoreDevtoolsModule.instrument({
       maxAge: 5
     })
