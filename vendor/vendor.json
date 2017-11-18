@@ -33,6 +33,12 @@
 			"revisionTime": "2017-10-19T21:57:19Z"
 		},
 		{
+			"checksumSHA1": "uGee8UTKbrc4ClSctv+SBv0RZF4=",
+			"path": "github.com/gin-contrib/cors",
+			"revision": "51f0ef8b07e973afb8b6c192bf90d5c3e575c01a",
+			"revisionTime": "2017-09-17T02:20:32Z"
+		},
+		{
 			"checksumSHA1": "BhMowD2DIKSd9qq8Pzh7Y3mh2/w=",
 			"path": "github.com/gin-contrib/sse",
 			"revision": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae",
@@ -73,6 +79,12 @@
 			"path": "github.com/icrowley/fake",
 			"revision": "e64cc2cf92049a299f359734c6ea76073f2a8b2c",
 			"revisionTime": "2017-07-23T15:10:11Z"
+		},
+		{
+			"checksumSHA1": "EhG45yZ9UW+kPnEpudT+CorAgV8=",
+			"path": "github.com/jeevatkm/go-model",
+			"revision": "00bcf69e10573c4ba261c9842194d07e6d4b50e9",
+			"revisionTime": "2017-05-22T07:24:57Z"
 		},
 		{
 			"checksumSHA1": "rAORHnq1E6diyOGhE6XqBq5tibg=",

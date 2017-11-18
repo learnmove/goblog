@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/goblog/app/helper"
 	"github.com/goblog/app/models"
-	"golang.org/x/crypto/bcrypt"
 )
 
 type UserRepository struct{}
@@ -24,7 +23,7 @@ func (UserRepository UserRepository) GetUser() []models.User {
 
 }
 func (UserRepository *UserRepository) Register(user *models.User) error {
-	hash, hasherr := helper.HashPassword([]byte(user.Password))
+	hash, hasherr := helper.HashPassword(user.Password)
 	if hasherr != nil {
 		fmt.Println("hash error")
 		return hasherr
@@ -41,8 +40,9 @@ func (UserRepository *UserRepository) Login(user *models.User) (models.User, boo
 		return LoginUser, false, t
 	}
 	// compare password
-	CompareErr := bcrypt.CompareHashAndPassword([]byte(LoginUser.Password), []byte(user.Password))
-	if CompareErr != nil {
+	fmt.Println(user)
+	CompareErr := helper.ComparePassword(LoginUser.Password, user.Password)
+	if CompareErr != true {
 		fmt.Println("error password")
 		return LoginUser, false, t
 

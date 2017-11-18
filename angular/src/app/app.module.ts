@@ -9,12 +9,14 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ButtonModule} from "primeng/primeng"
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    ButtonModule,
     BrowserModule,
     FormsModule,
     HttpModule,

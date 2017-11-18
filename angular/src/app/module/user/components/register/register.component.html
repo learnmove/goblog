@@ -1,3 +1,90 @@
-<p>
-  register works!
-</p>
+
+<div class="container">
+  <h4>註冊</h4>
+  <div class="row">
+   <form [formGroup]="registerForm" (ngSubmit)=onRegister() >
+  <div class="form-group">
+    <label for="exampleInputEmail1">帳號</label>
+    <input formControlName="account" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="axyz8920">
+    <p class="text-danger" *ngIf="!registerForm.controls.account.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group ">
+    <label for="exampleInputPassword1">密碼</label>
+    <input  formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="6位以上英文或數字">
+    <p class="text-danger" *ngIf="!registerForm.controls.password.valid">未通過</p>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">暱稱</label>
+    <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="小華">
+    <p class="text-danger" *ngIf="!registerForm.controls.name.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">年紀(歲)</label>
+    <input formControlName="age" maxlength="2" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="20">
+    <p class="text-danger" *ngIf="!registerForm.controls.age.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">電話</label>
+    <input formControlName="phone"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0988582102">
+    <p class="text-danger" *ngIf="!registerForm.controls.phone.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Line</label>
+    <input formControlName="line" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter line">
+    <p class="text-danger" *ngIf="!registerForm.controls.line.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">地址</label>
+    <input formControlName="address" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <p class="text-danger" *ngIf="!registerForm.controls.address.valid">未通過</p>
+
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">城市</label>
+  <select class="form-control" formControlName="city" id="sel1">
+<option >基隆市</option>
+<option >嘉義市</option>
+<option >台北市</option>
+<option >嘉義縣</option>
+<option >新北市</option>
+<option >台南市</option>
+<option >桃園縣</option>
+<option >高雄市</option>
+<option >新竹市</option>
+<option >新竹縣</option>
+<option >台東縣</option>
+<option >苗栗縣</option>
+<option >屏東縣</option>
+<option >花蓮縣</option>
+<option >台中市</option>
+<option >宜蘭縣</option>
+<option >彰化縣</option>
+<option >澎湖縣</option>
+<option >南投縣</option>
+<option >金門縣</option>
+<option >雲林縣</option>
+<option >連江縣</option>
+  </select>
+    <p class="text-danger" *ngIf="!registerForm.controls.city.valid">未通過</p>
+
+   
+  </div>
+  <button pButton type="submit" label="註冊" [disabled]="!registerForm.valid"  ></button>
+</form>
+  </div>
+</div>
+<button  (click)="onRegister()" >button</button>
+<i class="fa fa-meetup" aria-hidden="true"></i>
+<button pButton type="button" icon="fa-check" iconPos="left">qwe</button>
+<p-growl [(value)]="msgs"></p-growl>

@@ -19,14 +19,14 @@ func Seed() {
 
 }
 func UserSeeder() {
-	for i := 1; i < 3; i++ {
+	for i := 1; i <= 50; i++ {
 		DB.Create(factory.UserFake())
 
 	}
 
 }
 func ArticleSeeder() {
-	for i := 1; i < 3; i++ {
+	for i := 1; i <= 50; i++ {
 		DB.Create(factory.ArticleFake())
 	}
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/goblog/app/controllers"
 )
@@ -9,7 +10,11 @@ func main() {
 
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/**/*")
-
+	r.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"http://localhost:4200"},
+		AllowMethods: []string{"PUT", "PATCH", "POST", "GET", "DELETE"},
+		AllowHeaders: []string{"Content-type"},
+	}))
 	api := r.Group("/api")
 	{
 		UserController := controllers.UserController{}
@@ -31,6 +36,6 @@ func main() {
 		}
 
 	}
-	r.Run(":8089")
+	r.Run(":3001")
 
 }

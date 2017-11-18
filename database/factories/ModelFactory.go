@@ -1,6 +1,7 @@
 package factory
 
 import (
+	"github.com/goblog/app/helper"
 	. "github.com/goblog/app/models"
 	"github.com/icrowley/fake"
 	"math/rand"
@@ -13,10 +14,11 @@ func init() {
 
 func UserFake() interface{} {
 
+	t, _ := helper.HashPassword("secret")
 	user := User{
 		Name:     fake.FirstName(),
 		Age:      rand.Intn(100),
-		Password: "secret",
+		Password: string(t),
 		Account:  fake.FirstName(),
 	}
 	return &user
@@ -26,7 +28,7 @@ func ArticleFake() interface{} {
 	article := Article{
 		Title:   fake.Title(),
 		Content: fake.Paragraph(),
-		UserID:  rand.Intn(10) + 1,
+		UserID:  rand.Intn(50) + 1,
 	}
 
 	return &article

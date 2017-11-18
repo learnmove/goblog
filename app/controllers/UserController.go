@@ -4,8 +4,10 @@ package controllers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/goblog/app/ViewModel"
 	"github.com/goblog/app/models"
 	"github.com/goblog/app/repositories"
+	mapper "github.com/jeevatkm/go-model"
 	"net/http"
 )
 
@@ -23,16 +25,23 @@ func (con UserController) init() {
 func (con UserController) Create(c *gin.Context) {
 	user := &models.User{}
 	fmt.Println(string(user.Password))
-	c.BindJSON(user)
-	registerErr := con.UserRepository.Register(user)
-	if registerErr != nil {
+	bindErr := c.BindJSON(user)
+
+	if bindErr != nil {
 		c.JSON(403, gin.H{
-			"error": "sorry it fault register",
+			"error": "空白BODY",
 		})
 	} else {
-		c.JSON(200, gin.H{
-			"name": "ok",
-		})
+		registerErr := con.UserRepository.Register(user)
+		if registerErr != nil {
+			c.JSON(403, gin.H{
+				"error": "sorry it fault register",
+			})
+		} else {
+			c.JSON(200, gin.H{
+				"name": "ok",
+			})
+		}
 	}
 
 }
@@ -40,13 +49,20 @@ func (con UserController) Login(c *gin.Context) {
 	user := &models.User{}
 	c.BindJSON(user)
 	LoginUser, result, token := con.UserRepository.Login(user)
+	fmt.Println(LoginUser)
+	LoginVM := ViewModel.UserLogin{}
+	err := mapper.Copy(&LoginVM, LoginUser)
+	if err != nil {
+		fmt.Println("err mapper")
+	}
 	if result == false {
-		c.JSON(403, gin.H{
+		c.JSON(402, gin.H{
 			"error": "登錄失敗",
 		})
 	} else {
 		c.JSON(200, gin.H{
-			"user":  LoginUser,
+			"user": LoginVM,
+
 			"token": token,
 		})
 	}

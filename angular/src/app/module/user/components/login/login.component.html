@@ -1,4 +1,28 @@
-<p>
-  login works!
-</p>
-<button (click)="test()">button</button>
+
+<div class="container">
+  <div class="row">
+
+   <form [formGroup]="loginForm" (ngSubmit)=onLogin() >
+  <div class="form-group">
+      <h4>登入</h4>
+    
+    <label for="exampleInputEmail1">帳號</label>
+    <input formControlName="account" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <p class="text-danger" *ngIf="!loginForm.controls.account.valid">未通過</p>
+
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group ">
+    <label for="exampleInputPassword1">密碼</label>
+    <input  formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <p class="text-danger" *ngIf="!loginForm.controls.password.valid">未通過</p>
+  </div>
+
+  <button pButton type="submit" label="登入" [disabled]="!loginForm.valid"  ></button>
+</form>
+  </div>
+</div>
+<button  (click)="test()" >button</button>
+<i class="fa fa-meetup" aria-hidden="true"></i>
+<button pButton type="button" icon="fa-check" iconPos="left">qwe</button>
+<p-growl [(value)]="msgs"></p-growl>

@@ -1,8 +1,17 @@
+package ViewModel
+
+import (
+	"github.com/goblog/app/models"
+)
+
 type UserLogin struct {
-	BaseModel
-	Name     string    `json:"name" gorm:"not null"`
-	Account  string    `json:"account" gorm:"not null;unique"`
-	Password string    `json:"-" gorm:"not null"`
-	Age      int       `json:"age"`
-	Articles []Article `json:"articles" `
+	models.BaseModel
+	Name    string `json:"name"`
+	Account string `json:"account"`
+	Age     int    `json:"age"`
+	Approve bool   `json:"approve"`
+	Phone   string `json:"phone"`
+	Line    string `json:"line"`
+	Address string `json:"address"`
+	City    string `json:"city"`
 }

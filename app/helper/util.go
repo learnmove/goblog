@@ -7,11 +7,24 @@ import (
 	"time"
 )
 
-func HashPassword(plainText []byte) ([]byte, error) {
+func HashPassword(plainText string) ([]byte, error) {
 
-	return bcrypt.GenerateFromPassword(plainText, bcrypt.DefaultCost)
+	return bcrypt.GenerateFromPassword([]byte(plainText), bcrypt.DefaultCost)
 }
+func ComparePassword(FromDb, FromBody string) bool {
+	fmt.Println("---------")
 
+	fmt.Println(FromDb)
+	fmt.Println("-----------")
+	fmt.Println(FromBody)
+
+	err := bcrypt.CompareHashAndPassword([]byte(FromDb), []byte(FromBody))
+	if err != nil {
+		return false
+	} else {
+		return true
+	}
+}
 func GenerateToken() string {
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := token.Claims.(jwt.MapClaims)
