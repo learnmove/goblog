@@ -24,6 +24,7 @@ export class LoginEffect {
     return this.loginService.login(action.payload).map((payload)=>
 {
     UserHelper.setUser(payload)
+    this.messageService.add({severity:'success', summary:'Service Message', detail:'登錄成功'});
     return  new LoginSuccess(payload)
 }).catch((err)=>{
     console.log(err)
@@ -38,7 +39,7 @@ $loginfail:Observable<Action.CustomAction>=this.action$
 .ofType(UserActionTypes.LoginFail)
 .do((action:Action.CustomAction)=>    
 {
-this.messageService.add({severity:'error', summary:'Service Message', detail:'註冊失敗'});
+this.messageService.add({severity:'error', summary:'Service Message', detail:'登錄失敗'});
     
 } )
 

@@ -15,3 +15,7 @@ type UserLogin struct {
 	Address string `json:"address"`
 	City    string `json:"city"`
 }
+type UserLoginPost struct {
+	Account  string `json:"account"`
+	Password string `json:"password"`
+}

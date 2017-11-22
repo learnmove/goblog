@@ -16,6 +16,10 @@ func Seed() {
 	DB = db
 	UserSeeder()
 	ArticleSeeder()
+	CitySeeder()
+	ArticleCategorySeeder()
+	PetCategorySeeder()
+	ArticleCommentSeeder()
 
 }
 func UserSeeder() {
@@ -30,4 +34,30 @@ func ArticleSeeder() {
 		DB.Create(factory.ArticleFake())
 	}
 
+}
+func CitySeeder() {
+	cities := factory.CityFake()
+	for _, city := range cities {
+		DB.Create(&city)
+
+	}
+}
+func ArticleCategorySeeder() {
+	articleCategories := factory.ArticleCategoryFake()
+	for _, articleCategory := range articleCategories {
+		DB.Create(&articleCategory)
+
+	}
+}
+func PetCategorySeeder() {
+	petCategories := factory.PetCategoryFake()
+	for _, petCategory := range petCategories {
+		DB.Create(&petCategory)
+
+	}
+}
+func ArticleCommentSeeder() {
+	for i := 1; i <= 200; i++ {
+		DB.Create(factory.ArticleCommentFake())
+	}
 }

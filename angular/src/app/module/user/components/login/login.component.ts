@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   // })
 
   ngOnInit() {
-    console.log(this.store.select((state)=>state.userModule.user))
+    // console.log(this.store.select((state)=>state.userModule.user))
     
   }
   createLoginForm(){
@@ -32,12 +32,10 @@ export class LoginComponent implements OnInit {
       password:['',Validators.required]
     })
   }
-  test(){
-    this.store.dispatch(new Login(this.loginForm.value))
-  }
+
   onLogin(){
   console.log(UserHelper.getUser())
-  this.messageService.add({severity:'success', summary:'Service Message', detail:'登錄成功'});
+  this.store.dispatch(new Login(this.loginForm.value))
 
   }
 }

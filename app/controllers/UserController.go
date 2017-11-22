@@ -46,12 +46,21 @@ func (con UserController) Create(c *gin.Context) {
 
 }
 func (con UserController) Login(c *gin.Context) {
-	user := &models.User{}
-	c.BindJSON(user)
+	user := &ViewModel.UserLoginPost{}
+	bindErr := c.BindJSON(user)
+
+	if bindErr != nil {
+		c.JSON(402, gin.H{
+			"error": "登錄失敗",
+		})
+		return
+	}
+
 	LoginUser, result, token := con.UserRepository.Login(user)
-	fmt.Println(LoginUser)
+
 	LoginVM := ViewModel.UserLogin{}
 	err := mapper.Copy(&LoginVM, LoginUser)
+
 	if err != nil {
 		fmt.Println("err mapper")
 	}
@@ -59,12 +68,14 @@ func (con UserController) Login(c *gin.Context) {
 		c.JSON(402, gin.H{
 			"error": "登錄失敗",
 		})
+
 	} else {
 		c.JSON(200, gin.H{
 			"user": LoginVM,
 
 			"token": token,
 		})
+
 	}
 
 	// if LoginUser != nil {
@@ -80,9 +91,10 @@ func (con UserController) Login(c *gin.Context) {
 
 }
 func (con UserController) GetUser(c *gin.Context) {
+	articles := con.ArticleRepository.GetArticle(c.Copy())
 	c.JSON(200, gin.H{
 		"users":    con.UserRepository.GetUser(),
-		"articles": con.ArticleRepository.GetArticle(),
+		"articles": articles,
 	})
 }
 func (con UserController) Test(c *gin.Context) {

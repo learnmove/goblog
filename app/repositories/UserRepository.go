@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"fmt"
+	"github.com/goblog/app/ViewModel"
 	"github.com/goblog/app/helper"
 	"github.com/goblog/app/models"
 )
@@ -32,7 +33,7 @@ func (UserRepository *UserRepository) Register(user *models.User) error {
 		return DB.Create(user).Error
 	}
 }
-func (UserRepository *UserRepository) Login(user *models.User) (models.User, bool, string) {
+func (UserRepository *UserRepository) Login(user *ViewModel.UserLoginPost) (models.User, bool, string) {
 	var t string = ""
 	LoginUser := models.User{}
 	DB.Where("account = ?", user.Account).Find(&LoginUser)
