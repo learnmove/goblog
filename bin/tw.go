@@ -42,7 +42,8 @@ func main() {
 	case "migrate:seed":
 		migrate()
 		seeder()
-
+	case "make:index":
+		createIndex()
 	default:
 		log.Fatal("please input like 'go run tw.go -do migrate/seed/migrate:seed/make:controller/make:model -name Article'   ")
 	}
@@ -64,5 +65,9 @@ func stubController(name string) {
 }
 func stubRepository(name string) {
 	stubs.CreateRepository(name)
+
+}
+func createIndex() {
+	migrations.CreateIndex()
 
 }

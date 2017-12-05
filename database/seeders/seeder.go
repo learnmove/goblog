@@ -30,7 +30,7 @@ func UserSeeder() {
 
 }
 func ArticleSeeder() {
-	for i := 1; i <= 50; i++ {
+	for i := 1; i <= 100000; i++ {
 		DB.Create(factory.ArticleFake())
 	}
 

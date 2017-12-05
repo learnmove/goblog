@@ -1,0 +1,38 @@
+.article{
+    background-color: #000000;
+.top{
+    background-color: #000080;
+        .title-tag{
+            background-color: #C0C0C0;
+            color:#000080;
+        }
+        .value-tag{
+            background-color: #000080;
+            color:#C0C0C0;
+            word-break: break-all;
+        }
+    }
+}
+.body{
+    background-color: #000000;
+        color:#C0C0C0;
+    word-break: break-all;
+
+}
+.bottom{
+    background-color: #000000;
+  .comment-author{
+      color:#FFEF00;
+  }
+  .comment-type{
+      color:#fff;
+  }
+  .comment-time{
+        color:#C0C0C0;
+
+  }
+  .comment-content{
+      color:#fff;
+
+  }
+}

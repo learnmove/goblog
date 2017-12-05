@@ -1,0 +1,52 @@
+<div class="container">
+    <form [formGroup]="articleForm" (ngSubmit)="onPost()">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">主題</label>
+    <input type="text" class="form-control"  formControlName="title" id="exampleFormControlInput1" placeholder="主題">
+  </div>
+ <div class="row">
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">城市</label>
+        <select formControlName="city_id" class="form-control">
+    <option  [value]="city.id" *ngFor="let city of category.cities">{{city.name  }}</option>
+    </select>
+      </div>
+    </div>
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">分類</label>
+        <select formControlName="article_category_id" class="form-control">
+          
+          
+     <option [value]="cat.id"*ngFor="let cat of category.category">{{cat.name}}</option>
+    </select>
+    
+      </div>
+      
+    </div>
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">動物</label>
+        <select  formControlName="pet_category_id" class="form-control">
+    <option  [value]="pet.id" *ngFor="let pet of category.pets">{{pet.name}}</option>
+    </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">內容</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="content" rows="3"></textarea>
+
+  </div>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">圖片</label>
+    <input type="file"  id="" (change)="fileUpload($event)" multiple>
+  </div>
+    <button  type="submit" class="btn btn-success"   >送出</button>
+    <!--<button  type="submit" class="btn btn-success" [disabled]="!articleForm.valid"   >送出</button>-->
+    
+</form>
+</div>

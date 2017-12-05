@@ -1,0 +1,78 @@
+<div class="container ">
+  
+  <button  pButton  type="button" (click)="goBack()" class="btn btn-large btn-block btn-success">回上頁</button>
+  
+  <div class="article" style="padding-bottom:100px;">
+    <div class="top">
+      <div class="row">
+        <div class="col-md-6">
+         <span class="author title-tag">
+           作者：</span> 
+           <span class="author-name value-tag">
+            {{article.account}} ({{article.name}} )
+           </span>
+        </div>
+        <div class="col-md-6">
+         <span class=" title-tag">
+           分類：</span> 
+           <span class=" value-tag">
+             {{article.city_name}} 
+           </span>
+        </div>
+        <div class="col-md-12">
+          <span class=" title-tag">
+           標題</span> 
+           <span class=" value-tag">
+            [{{article.pet_category_name}} ] [{{article.article_category_name}}] {{article.title}} 
+           </span>
+        </div>
+        <div class="col-md-12">
+          <span class=" title-tag">
+           時間</span> 
+           <span class=" value-tag">
+           {{article.created_at}}  
+           </span>
+           
+        </div>
+      </div>
+    </div>
+    <div class="body" [innerHtml]="article.content">
+     
+                     
+    </div>
+      <div class="imgbox" *ngFor="let img of article.imgurl ">
+      <img class="img-fluid" [src]="img" alt="">
+      </div>
+
+      <h4 style="color:white;">------------------</h4>
+    
+    <div class="bottom">
+      <div class="reply" *ngFor="let reply of article.article_comment">
+        <div class="row">
+
+          <div class="col-md-10">
+           <span class="comment-type">
+             回 
+           </span>
+           <span class="comment-author">
+             {{reply.account}} 
+           </span>
+           <span class="comment-content">
+          {{reply.content}}
+           </span>
+          </div>
+          <div class="col-md-2">
+           <span class="comment-time">
+            {{reply.created_at}}
+           </span>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:fixed;bottom:0px;">
+    <textarea class="form-control" type="text" [(ngModel)]="content" name="" id=""></textarea>
+    <button class="btn btn-primary" (click)="postComment()" >回覆</button>
+  </div>
+
+</div>

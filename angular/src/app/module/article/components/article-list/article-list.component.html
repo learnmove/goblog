@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      
+  <a [routerLink]="['post']" class="btn btn-primary" >寫文章</a>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">城市</label>
+        <select #selecCity (change)="setCityCategory(selecCity.value)" class="form-control">
+    <option value="0">全部</option>
+    <option  [value]="city.id" [selected]="CityValue==city.id" *ngFor="let city of category.cities">{{city.name  }}</option>
+    </select>
+      </div>
+    </div>
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">分類</label>
+        <select #selecCat (change)="setCategory(selecCat.value)" class="form-control">
+          
+    <option value="0" >全部</option>
+          
+     <option [value]="cat.id" [selected]="CatValue==cat.id" *ngFor="let cat of category.category">{{cat.name}}</option>
+    </select>
+      </div>
+    </div>
+    <div class="col-md-4 col-4">
+      <div class="form-group">
+        <label for="exampleInputEmail1">動物</label>
+        <select  #selecPet (change)="setPetCategory(selecPet.value)" class="form-control">
+    <option  value="0">全部</option>
+    <option [selected]="PetValue==pet.id" [value]="pet.id" *ngFor="let pet of category.pets">{{pet.name}}</option>
+    </select>
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <table class="table table-dark table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">回覆</th>
+      <th scope="col">分類</th>
+      <th scope="col">地區</th>
+      <th scope="col">主題</th>
+      <th scope="col">觀看</th>
+      <th scope="col">作者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let article of articleList">
+      <th scope="row">{{article.article_comment_count}}</th>
+      <td>{{article.article_category_name}}</td>
+      <td>{{article.city_name}}</td>
+      <td> 
+        <a class="" href="#" [routerLink]="['/article',article.id]">[{{article.pet_category_name}}]{{article.title}}</a>
+      </td>
+      <td>{{article.ctr}}</td>
+      <td>{{article.name}} </td>
+    </tr>
+
+  </tbody>
+</table>
+  <play-pagination (clickPage)="clickPage($event)" [pageInfo]="pageInfo" ></play-pagination>
+
+</div>
+</div>
